@@ -1,0 +1,26 @@
+{
+  "name": "ictinv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration:generate":"drizzle-kit generate:pg --schema=./db/schema.ts",
+    "migration:push":"node -r esbuild-register ./db/migration.ts",
+    "migrate":"drizzle-kit generate:pg --schema=./db/schema.ts && node -r esbuild-register ./db/migration.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "drizzle-orm": "^0.30.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.3",
+    "postgres": "^3.4.4"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.20.14",
+    "express-session": "^1.18.0",
+    "typescript": "^5.4.3"
+  }
+}
