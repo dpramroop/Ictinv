@@ -1,0 +1,61 @@
+{
+  "id": "642e848f-e978-4abd-a581-ecb0458a7ddf",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "item": {
+      "name": "item",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ITEMTYPE": {
+          "name": "ITEMTYPE",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "BRAND": {
+          "name": "BRAND",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "MODEL": {
+          "name": "MODEL",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "QUANTITY": {
+          "name": "QUANTITY",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ATTRIBUTE": {
+          "name": "ATTRIBUTE",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

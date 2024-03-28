@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS "item" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"ITEMTYPE" text NOT NULL,
+	"BRAND" text NOT NULL,
+	"MODEL" text NOT NULL,
+	"QUANTITY" integer NOT NULL,
+	"ATTRIBUTE" json
+);
