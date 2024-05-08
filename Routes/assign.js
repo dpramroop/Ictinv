@@ -41,8 +41,10 @@ const client = new Client({
   router.post('/AddAssign',(req,res)=>{
    client.query(`INSERT INTO "assign"("ASSIGNDATE","CLIENTID") VALUES('${req.body.date}','${req.body.cid}') RETURNING *`,(err,resp)=>{
       if(!err)
-      {
-         
+      { 
+         console.log(resp.rows[0].no)
+          console.log(req.body.assignitems)
+          
          addassignitem(req.body.assignitems,resp.rows[0].no)
       }
       else{
@@ -70,12 +72,13 @@ const client = new Client({
 
   function addassignitem(aitems,id)
   {
-    for (aitem in aitems)
+    for (let aitem in aitems)
     {
-      client.query(`INSERT INTO "assign_item"("assignno","CURRENTASSIGN","REMARK","NAME","SERIALTAG","ITEMID") VALUES('${id}','${aitem.currentassign}','${aitem.remark}','${aitem.name}','${aitem.serialtag}',${aitem.itemid})`,(err,resp)=>{
+      
+      client.query(`INSERT INTO "assign_item"("assignno","CURRENTASSIGN","REMARK","NAME","SERIALTAG","ITEMID") VALUES('${id}','${aitems[aitem].currentassign}','${aitems[aitem].remark}','${aitems[aitem].name}','${aitems[aitem].serialtag}',${parseInt(aitems[[aitem]].itemid)})`,(err,resp)=>{
          if(!err)
          {
-            res.send("sent")
+            console.log("sent")
          }
          else{
             console.log(err.message)
@@ -84,5 +87,27 @@ const client = new Client({
        })
          
     }
+
+  }
+
+  function searchserial(serial)
+  {
+   var serialitem=false
+   client.query(`Select * from "assign_item" where "SERIALTAG"='${serial}'`,(err,resp)=>{
+      if(!err)
+      {
+        if(resp.rows.length>0)
+         {
+            serialitem=true
+         }
+      }
+      else{
+         console.log(err.message)
+      }
+      client.end;
+    })
+     
+         return serialitem
+    
 
   }
