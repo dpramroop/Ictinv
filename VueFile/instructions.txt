@@ -1,0 +1,7 @@
+npm install vue@latest
+or
+npm install vue^3.4.21
+
+say no to everything
+
+Copy over replace src folder
